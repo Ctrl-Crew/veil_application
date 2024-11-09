@@ -81,7 +81,12 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          PrescriptionHistoryPage()
+          Container(
+            height: 4,
+            width: 500,
+            color: Colors.amber,
+          ),
+          Expanded(child: PrescriptionHistoryPage())
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
+import 'package:veil_application/utils/theme.dart';
+
 class PrescriptionHistoryPage extends StatefulWidget {
   @override
   _PrescriptionHistoryPageState createState() =>
@@ -53,6 +55,7 @@ class PrescriptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
+      color: hexToRGBA("0F9D58").withOpacity(0.5),
       elevation: 3,
       child: Padding(
         padding: const EdgeInsets.all(16.0),

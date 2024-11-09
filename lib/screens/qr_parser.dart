@@ -13,9 +13,26 @@ class QRResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<dynamic> prescriptions = data;
 
+    Future<void> _savePrescriptionData(List<dynamic> prescriptions) async {
+      print("Saved\n\n\n\n\n\n\n");
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final mem =
+          await prefs.setString('prescriptions', jsonEncode(prescriptions));
+      if (mem) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
+      } else {
+        print("err saving");
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prescription Details'),
+        title: const Text('Prescription Details'),
       ),
       body: Column(
         children: [
@@ -23,7 +40,7 @@ class QRResultPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: prescriptions.isEmpty
-                  ? Center(child: Text('No data available'))
+                  ? const Center(child: Text('No data available'))
                   : ListView.builder(
                       itemCount: prescriptions.length,
                       itemBuilder: (context, index) {
@@ -38,7 +55,7 @@ class QRResultPage extends StatelessWidget {
                 onPressed: () async {
                   await _savePrescriptionData(prescriptions);
                 },
-                child: Text("Save Medication")),
+                child: const Text("Save Medication")),
           )
         ],
       ),
@@ -51,20 +68,6 @@ class QRResultPage extends StatelessWidget {
           (data.isNotEmpty ? jsonDecode(data) : []) as List);
     } catch (e) {
       return [];
-    }
-  }
-
-  Future<void> _savePrescriptionData(List<dynamic> prescriptions) async {
-    print("Saved\n\n\n\n\n\n\n");
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final mem =
-        await prefs.setString('prescriptions', jsonEncode(prescriptions));
-    if (mem) {
-      MaterialPageRoute(
-        builder: (context) => HomeScreen(),
-      );
-    } else {
-      print("err saving");
     }
   }
 }
@@ -86,37 +89,37 @@ class PrescriptionCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(
+                const Text(
                   "Name: ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Expanded(child: Text(prescription['name'] ?? 'N/A')),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Text(
+                const Text(
                   "Dosage: ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Expanded(child: Text(prescription['dosage'] ?? 'N/A')),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Text(
+                const Text(
                   "Duration: ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Expanded(child: Text(prescription['duration'] ?? 'N/A')),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Text(
+                const Text(
                   "Instructions: ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
