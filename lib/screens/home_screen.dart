@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:veil_application/screens/prescriptions.dart';
 import 'package:veil_application/utils/theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,63 +18,71 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/scan');
-                    },
-                    child: Container(
-                        height: 150,
-                        margin: const EdgeInsets.only(right: 8),
-                        decoration: BoxDecoration(
-                          color: hexToRGBA("4285F4"),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Image(
-                                      image: AssetImage("assets/logo.png"),
-                                      height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/scan');
+                        },
+                        child: Container(
+                            height: 150,
+                            margin: const EdgeInsets.only(right: 8),
+                            decoration: BoxDecoration(
+                              color: hexToRGBA("4285F4"),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Image(
+                                          image: AssetImage("assets/logo.png"),
+                                          height: 20,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          'Scan Prescription',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      'Scan Prescription',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  Image(
+                                      image:
+                                          AssetImage("assets/qr_example.png"))
+                                ],
                               ),
-                              Image(image: AssetImage("assets/qr_example.png"))
-                            ],
-                          ),
-                        )),
-                  ),
+                            )),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          PrescriptionHistoryPage()
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
