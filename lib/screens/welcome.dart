@@ -61,7 +61,7 @@ class _WelcomePageState extends State<WelcomePage>
               ),
               const SizedBox(height: 20),
               const Text(
-                'Welcome to Your App',
+                'Welcome to Veil App',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
